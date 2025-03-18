@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wuerfel-Simulation</title>
+    <style>
+        .wuerfel {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .seite {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border: 1px solid black;
+            display: none;
+        }
+        
+        .seite.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wuerfel">
+        <div class="seite" id="0" style="top: 0; left: 0;"></div>
+        <div class="seite" id="1" style="top: 0; left: 0;"><img src="die1.jpg" width="100px" height = "100px"></div>
+        <div class="seite" id="2" style="top: 0; left: 0;"><img src="die2.jpg" width="100px" height = "100px"></div>
+        <div class="seite" id="3" style="top: 0; left: 0;"><img src="die3.jpg" width="100px" height = "100px"></div>
+        <div class="seite" id="4" style="top: 0; left: 0;"><img src="die4.jpg" width="100px" height = "100px"></div>
+        <div class="seite" id="5" style="top: 0; left: 0;"><img src="die5.jpg" width="100px" height = "100px"></div>
+        <div class="seite" id="6" style="top: 0; left: 0;"><img src="die6.jpg" width="100px" height = "100px"></div>
+    </div>
+    <br><br>
+    <button onclick="wuerfelWurf()">Wuerfeln</button>
+    
+    <script>
+        function wuerfelWurf() {
+            var wuerfel = document.querySelector(".wuerfel");
+            var seiten = wuerfel.querySelectorAll(".seite");
+            var zufallszahl = Math.floor(Math.random() * 6) + 1;
+            
+            seiten.forEach(function(seite) {
+                seite.classList.remove("active");
+            });
+            
+            var seite = document.getElementById(0);
+            seite.classList.add("active");
+            seite.classList.remove("active");
+               
+            
+            var seite = document.getElementById(zufallszahl);
+            // Verzögere das Anzeigen der neuen aktiven Seite um 1 Sekunde
+               setTimeout(function() {
+                   seite.classList.add("active");
+               }, 500);
+        }
+    </script>
+</body>
+</html>
