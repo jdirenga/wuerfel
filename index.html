@@ -26,39 +26,46 @@
     </style>
 </head>
 <body>
-    <div class="wuerfel">
-        <div class="seite" id="0" style="top: 0; left: 0;"></div>
-        <div class="seite" id="1" style="top: 0; left: 0;"><img src="die1.jpg" width="200px" height = "200px"></div>
-        <div class="seite" id="2" style="top: 0; left: 0;"><img src="die2.jpg" width="200px" height = "200px"></div>
-        <div class="seite" id="3" style="top: 0; left: 0;"><img src="die3.jpg" width="200px" height = "200px"></div>
-        <div class="seite" id="4" style="top: 0; left: 0;"><img src="die4.jpg" width="200px" height = "200px"></div>
-        <div class="seite" id="5" style="top: 0; left: 0;"><img src="die5.jpg" width="200px" height = "200px"></div>
-        <div class="seite" id="6" style="top: 0; left: 0;"><img src="die6.jpg" width="200px" height = "200px"></div>
-    </div>
-    <br><br>
-    <button onclick="wuerfelWurf()">Wuerfeln</button>
-    
-    <script>
-        function wuerfelWurf() {
-            var wuerfel = document.querySelector(".wuerfel");
-            var seiten = wuerfel.querySelectorAll(".seite");
-            var zufallszahl = Math.floor(Math.random() * 6) + 1;
-            
-            seiten.forEach(function(seite) {
+    <!-- Lege den Button um den Würfel herum, unsichtbar. -->
+    <button onclick="wuerfelWurf()" style="background: none; border: none; padding: 0;">
+      <div id="wuerfel" class="wuerfel">
+        <!-- Hier kommt der Rest des Würfel-Codes -->
+        <div class="wuerfel">
+            <div class="seite" id="0" style="top: 0; left: 0;"></div>
+            <div class="seite" id="1" style="top: 0; left: 0;"><img src="die1.jpg" width="200px" height = "200px"></div>
+            <div class="seite" id="2" style="top: 0; left: 0;"><img src="die2.jpg" width="200px" height = "200px"></div>
+            <div class="seite" id="3" style="top: 0; left: 0;"><img src="die3.jpg" width="200px" height = "200px"></div>
+            <div class="seite" id="4" style="top: 0; left: 0;"><img src="die4.jpg" width="200px" height = "200px"></div>
+            <div class="seite" id="5" style="top: 0; left: 0;"><img src="die5.jpg" width="200px" height = "200px"></div>
+            <div class="seite" id="6" style="top: 0; left: 0;"><img src="die6.jpg" width="200px" height = "200px"></div>
+        </div>
+        <br><br>
+        
+        <script>
+            function wuerfelWurf() {
+                var wuerfel = document.querySelector(".wuerfel");
+                var seiten = wuerfel.querySelectorAll(".seite");
+                var zufallszahl = Math.floor(Math.random() * 6) + 1;
+                
+                seiten.forEach(function(seite) {
+                    seite.classList.remove("active");
+                });
+                
+                var seite = document.getElementById(0);
+                seite.classList.add("active");
                 seite.classList.remove("active");
-            });
-            
-            var seite = document.getElementById(0);
-            seite.classList.add("active");
-            seite.classList.remove("active");
-               
-            
-            var seite = document.getElementById(zufallszahl);
-            // Verzögere das Anzeigen der neuen aktiven Seite um 1 Sekunde
-               setTimeout(function() {
-                   seite.classList.add("active");
-               }, 500);
-        }
-    </script>
+                   
+                
+                var seite = document.getElementById(zufallszahl);
+                // Verzögere das Anzeigen der neuen aktiven Seite um 1 Sekunde
+                   setTimeout(function() {
+                       seite.classList.add("active");
+                   }, 500);
+            }
+        </script>
+        
+      </div>
+    </button>
+    
 </body>
 </html>
