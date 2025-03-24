@@ -44,7 +44,7 @@
         <script>
             function wuerfelWurf() {
                 let count = 1;
-                while while (count <= 5) {
+                while (count <= 5) {
 
                     var wuerfel = document.querySelector(".wuerfel");
                     var seiten = wuerfel.querySelectorAll(".seite");
@@ -63,8 +63,9 @@
                     // Verzögere das Anzeigen der neuen aktiven Seite um 1 Sekunde
                        setTimeout(function() {
                            seite.classList.add("active");
-                       }, 10);
-                count++;
+                       }, 500);
+                    
+                    count++;
                 }
             }
         </script>
