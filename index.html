@@ -43,24 +43,28 @@
         
         <script>
             function wuerfelWurf() {
-                var wuerfel = document.querySelector(".wuerfel");
-                var seiten = wuerfel.querySelectorAll(".seite");
-                var zufallszahl = Math.floor(Math.random() * 6) + 1;
-                
-                seiten.forEach(function(seite) {
+                while while (count <= 5) {
+
+                    var wuerfel = document.querySelector(".wuerfel");
+                    var seiten = wuerfel.querySelectorAll(".seite");
+                    var zufallszahl = Math.floor(Math.random() * 6) + 1;
+                    
+                    seiten.forEach(function(seite) {
+                        seite.classList.remove("active");
+                    });
+                    
+                    var seite = document.getElementById(0);
+                    seite.classList.add("active");
                     seite.classList.remove("active");
-                });
-                
-                var seite = document.getElementById(0);
-                seite.classList.add("active");
-                seite.classList.remove("active");
-                   
-                
-                var seite = document.getElementById(zufallszahl);
-                // Verzögere das Anzeigen der neuen aktiven Seite um 1 Sekunde
-                   setTimeout(function() {
-                       seite.classList.add("active");
-                   }, 500);
+                       
+                    
+                    var seite = document.getElementById(zufallszahl);
+                    // Verzögere das Anzeigen der neuen aktiven Seite um 1 Sekunde
+                       setTimeout(function() {
+                           seite.classList.add("active");
+                       }, 10);
+                count++;
+                }
             }
         </script>
         
